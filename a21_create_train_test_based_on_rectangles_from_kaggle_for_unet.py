@@ -14,6 +14,10 @@ for i in range(1, 4):
 
 
 def create_unet_mask_from_bboxes(res):
+    """
+    res - output from read_rectangles()
+    
+    """
     files = glob.glob(INPUT_PATH + "*/*.jpg")
     bbox_absent = 0
     for f in files:
@@ -52,6 +56,9 @@ def create_unet_mask_from_bboxes(res):
 
 
 def read_rectangles():
+    """
+    reads the bb json and creates a dict -  res
+    """
     res = dict()
     for clss in range(1, 4):
         f1 = open("../modified_data/manual_segmentation_box_kaggle/Type_{}_bbox.tsv".format(clss))
